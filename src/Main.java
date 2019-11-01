@@ -39,7 +39,24 @@ public class Main {
     }
 
     /**
+     * Insert a new node where node.val = val into red-black tree
+     * @param tree the tree that the new node will be inserted into
+     * @param val value of the node to be inserted into the tree
+     */
+    public static void InsertRBT(RBT tree, int val) {
+        TreeNode cur = new TreeNode(val);
+        //Case I: Tree is empty
+        if(tree.size == 0) {
+            // TODO create new tree, where root of tree is the new node
+        }
+
+        //Case II: z.color == 'r' && z.p.color == 'r'
+        // TODO solve collision accordingly
+    }
+
+    /**
      * Generate 10 random numbers to be used to create tree
+     * TODO Analyze complexity
      * @param seed the initial seed that is parsed from args
      * @param nums empty array of 10 integers that will be filled by this method and used to create the tree
      *
@@ -66,8 +83,8 @@ public class Main {
 
     /**
      *
-     * @param seed
-     * @param nums
+     * @param seed binary version of the seed
+     * @param nums array to store the randomly generated number
      * @return
      */
     public static int LFSRHelper(String seed, int nums) {
@@ -82,6 +99,9 @@ public class Main {
 
     /**
      * Print a red-black tree level-by-level
+     * Since we are visit each node exactly once, the runtime complexity of this method would be O(n).
+     * In this method, we also create a queue that we use to keep track of the traversal, so the space complexity would
+     * also be O(n), since we need to add every element to the queue.
      * @param root root node of a red-black tree
      */
     public static void levelOrderPrint(TreeNode root) {

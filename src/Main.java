@@ -40,21 +40,6 @@ public class Main {
 
     /**
      * Insert a new node where node.val = val into red-black tree
-     * From book:
-     * TREE-INSERT(T, z)
-     * 1 y = NIL
-     * 2 x = T.root
-     * 3 while neq NIL
-     * 4    y = x
-     * 5    if  z.key < x.key
-     * 6        x = x.left
-     * 7    else x = x.right
-     * 8 z.p = y
-     * 9 if y == NIL
-     * 10   T.root = z // tree T was empty
-     * 11 elseif z.key < y.key
-     * 12   y.left = z
-     * 13 else y.right = z
      * @param tree the tree that the new node will be inserted into
      * @param val value of the node to be inserted into the tree
      */

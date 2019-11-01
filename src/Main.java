@@ -3,6 +3,9 @@
  * @author Govind Brahmunyapura
  * @version 1.0
  */
+
+import java.util.LinkedList;
+
 public class Main {
     public static void main(String[] args) {
         /**
@@ -16,7 +19,20 @@ public class Main {
         int[] nums = new int[10];
 
 
+        //Generate 10 random numbers using LFRS which will be stored in the previously create array (nums)
         LFSR(seed, nums);
+
+        /**
+         * Steps from here
+         *  * Create new root node
+         *      * root.val = nums[0]
+         *      * root.left = null
+         *      * root.right = null
+         *      * root.color = 'b'
+         *  * Loop through the rest of nums and insert each node
+         *  * Print the tree by using level-order traversal (queue)
+         *
+         */
 
 
         System.out.println("Test");
@@ -57,10 +73,38 @@ public class Main {
     public static int LFSRHelper(String seed, int nums) {
         /*
          * TODO
-         *  
+         *
          *
          */
 
         return 0;
+    }
+
+    /**
+     * Print a red-black tree level-by-level
+     * @param root root node of a red-black tree
+     */
+    public static void levelOrderPrint(TreeNode root) {
+
+        /**
+         * Queue used for tree traversal
+         */
+        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+
+        queue.add(root);
+
+        //Traverse tree and print by level
+        while(!queue.isEmpty()) {
+            TreeNode temp = queue.poll();
+            System.out.println(temp.val);
+
+            if(temp.left != null) {
+                queue.add(temp.left);
+            }
+            if(temp.right != null) {
+                queue.add(temp.right);
+            }
+        }
+
     }
 }

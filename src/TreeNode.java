@@ -2,6 +2,7 @@ public class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
+    TreeNode parent;
     char color;
 
     public TreeNode(int val) {

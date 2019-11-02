@@ -1,6 +1,6 @@
 /**
  * @author Charun Upara
- * @author Govind Brahmunyapura
+ * @author Govind Brahmanyapura
  * @version 1.0
  */
 
@@ -114,11 +114,19 @@ public class Main {
 
 
     }
+
+    /**
+     * Recolor nodes to make sure that all five properties of red-black tree holds
+     *
+     * @param tree the tree that the new node is inserted into
+     * @param node the node that is insserted into the tree
+     */
     public static void insertRBTFixUp(RBT tree, TreeNode node) {
         //TODO
         while(node.parent.color == 'r') {
             //Uncle is the left child of grandparent of node
             if(node.parent == node.parent.parent.left) {
+
                 //Case I: tree has one element
                 if(tree.size == 1) {
                     tree.root.color = 'b';
@@ -132,6 +140,11 @@ public class Main {
                     //  newNode.parent.color = 'b'
                     //  newNode.uncle.color = 'b'
                 }
+            }
+
+            //Uncle is the right child of the grandparent of node
+            else {
+
             }
 
         }
@@ -173,6 +186,8 @@ public class Main {
          * Binary version of seed
          */
         String binaryInput = Integer.toBinaryString(seed);
+
+        //Get the appropriate bits to calculate the new bit
         int[] binaryDigits = new int[4];
         binaryDigits[0] = (int)(binaryInput.charAt(2) - '0');
         binaryDigits[1] = (int)(binaryInput.charAt(4) - '0');

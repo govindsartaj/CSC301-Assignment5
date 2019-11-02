@@ -78,6 +78,15 @@ public class Main {
          * Binary version of seed
          */
         String binaryInput = Integer.toBinaryString(seed);
+        int[] binaryDigits = new int[4];
+        binaryDigits[0] = (int)(binaryInput.charAt(2) - '0');
+        binaryDigits[1] = (int)(binaryInput.charAt(4) - '0');
+        binaryDigits[2] = (int)(binaryInput.charAt(5) - '0');
+        binaryDigits[3] = (int)(binaryInput.charAt(7) - '0');
+
+        int newBit = (binaryDigits[0] ^ ((binaryDigits[1] ^ (binaryDigits[5] ^ binaryDigits[7]))));
+
+        
 
     }
 

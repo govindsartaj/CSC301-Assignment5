@@ -71,6 +71,7 @@ public class Main {
         newNode.left = tree.NIL;
         newNode.right = tree.NIL;
         newNode.color = 'r';
+        ++tree.size;
         insertRBTFixUp(tree, newNode);
     }
 
@@ -115,6 +116,26 @@ public class Main {
     }
     public static void insertRBTFixUp(RBT tree, TreeNode node) {
         //TODO
+        while(node.parent.color == 'r') {
+            //Uncle is the left child of grandparent of node
+            if(node.parent == node.parent.parent.left) {
+                //Case I: tree has one element
+                if(tree.size == 1) {
+                    tree.root.color = 'b';
+                }
+
+                //Case II: Both node and node.parent color are red
+                //We look at the uncle of the node
+                if(node.color == 'r' && node.parent.color == 'r') {
+                    //Look at uncle
+                    //If uncle.color = 'r'
+                    //  newNode.parent.color = 'b'
+                    //  newNode.uncle.color = 'b'
+                }
+            }
+
+        }
+
     }
     public static void transplantRBT(RBT tree) {
         //TODO

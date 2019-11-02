@@ -32,6 +32,11 @@ public class RBT {
         this.height = 0;
     }
 
+    public int getBlackHeight(TreeNode node) {
+        //TODO
+        return 0;
+    }
+
 
 
 

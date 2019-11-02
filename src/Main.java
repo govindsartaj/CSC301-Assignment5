@@ -43,16 +43,90 @@ public class Main {
      * @param tree the tree that the new node will be inserted into
      * @param val value of the node to be inserted into the tree
      */
-    public static void InsertRBT(RBT tree, int val) {
-        TreeNode cur = new TreeNode(val);
-        //Case I: Tree is empty
-        if(tree.size == 0) {
-            // TODO create new tree, where root of tree is the new node
+    public static void insertRBT(RBT tree, int val) {
+        TreeNode newNode = new TreeNode(val);
+        //This step almost resembles the insertion method for regular binary search trees
+        TreeNode y = tree.NIL;
+        TreeNode x = tree.root;
+        while(x != tree.NIL) {
+            y = x;
+            if (newNode.val < x.val) {
+                x = x.left;
+            }
+            else {
+                x = x.right;
+            }
         }
+        newNode.parent = y;
 
-        //Case II: z.color == 'r' && z.p.color == 'r'
-        // TODO solve collision accordingly
+        if(y == tree.NIL) {
+            tree.root = newNode;
+        }
+        else if (newNode.val < y.val) {
+            y.left = newNode;
+        }
+        else {
+            y.right = newNode;
+        }
+        newNode.left = tree.NIL;
+        newNode.right = tree.NIL;
+        newNode.color = 'r';
+        insertRBTFixUp(tree, newNode);
     }
+
+    /**
+     * Rotates the node to the left by reassigning pointers
+     * Since we are always reassigning the same pointers regardless of tbe size of tree,
+     * this method runs in O(1) time.
+     * @param tree the red-black tree containing the node to be left-rotated
+     * @param x the node to be left-rotated
+     */
+    public static void leftRotate(RBT tree, TreeNode x) {
+        TreeNode y = x.right;
+        x.right = y.left;
+        if(y.left != tree.NIL) {
+            y.left.parent = x;
+        }
+        y.parent = x.parent;
+        if(x.parent == tree.NIL) {
+            tree.root = y;
+        }
+        else if (x == x.parent.left) {
+            x.parent.left = y;
+        }
+        else {
+            x.parent.right = y;
+        }
+        y.left = x;
+        x.parent = y;
+    }
+
+    /**
+     * Rotate the node to the right by reassigning pointers
+     * Since we are always reassigning the same pointers regardless of tbe size of tree,
+     * this method runs in O(1) time.
+     * @param tree the red-black tree containing the node to be right-rotated
+     * @param node the node to be right-rotated
+     */
+    public static void rightRotate(RBT tree, TreeNode node) {
+        //TODO
+
+
+    }
+    public static void insertRBTFixUp(RBT tree, TreeNode node) {
+        //TODO
+    }
+    public static void transplantRBT(RBT tree) {
+        //TODO
+    }
+    public static void deleteRBT(RBT tree, TreeNode node) {
+        //TODO
+    }
+    public static void deleteRBTFixUp(RBT tree, TreeNode node) {
+        //TODO
+    }
+
+
 
     /**
      * Generate 10 random numbers to be used to create tree
@@ -86,7 +160,7 @@ public class Main {
 
         int newBit = (binaryDigits[0] ^ ((binaryDigits[1] ^ (binaryDigits[5] ^ binaryDigits[7]))));
 
-        
+
 
     }
 
@@ -122,7 +196,9 @@ public class Main {
 
         queue.add(root);
 
-        //Traverse tree and print by level
+        /**
+         * Print tree by level
+         */
         while(!queue.isEmpty()) {
             TreeNode temp = queue.poll();
             System.out.println(temp.val);
@@ -136,16 +212,4 @@ public class Main {
         }
 
     }
-
-
-    /**
-     * TODO (methods to write)
-     *  * Left-Rotate
-     *  * Right-Rotate
-     *  * RB-Insert-FixUp
-     *  * RB-Insert
-     *  * RB-Transplant
-     *  * RB-Delete-FixUp
-     *  * RB-Delete
-     */
 }
